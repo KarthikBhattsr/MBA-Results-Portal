@@ -1,0 +1,64 @@
+<!-- File: topper-list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topper Lists</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-green-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md sticky top-0 shadow-md p-4 flex items-center">
+    <a href="index.html" class="text-green-600 font-medium hover:text-green-800 transition mr-4">← Home</a>
+    <h1 class="text-3xl font-extrabold text-green-600">Topper Lists</h1>
+  </header>
+
+  <!-- Filters -->
+  <section class="p-6 space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <select id="section-filter" class="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400">
+        <option value="all">MBA Toppers (All)</option>
+        <option value="A">A Section</option>
+        <option value="B">B Section</option>
+      </select>
+      <select id="spec-filter" class="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-400">
+        <option value="all">All Specializations</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Business Analytics">Business Analytics</option>
+        <option value="Human Resource">Human Resources</option>
+      </select>
+    </div>
+
+    <!-- Table Container -->
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-green-100">
+          <tr>
+            <th class="p-3 font-semibold">USN</th>
+            <th class="p-3 font-semibold">Name</th>
+            <th class="p-3 font-semibold">Specialization</th>
+            <th class="p-3 font-semibold">1st SGPA</th>
+            <th class="p-3 font-semibold">2nd SGPA</th>
+            <th class="p-3 font-semibold">3rd SGPA</th>
+            <th class="p-3 font-semibold">CGPA</th>
+            <th class="p-3 font-semibold">Rank</th>
+          </tr>
+        </thead>
+        <tbody id="table-body" class="divide-y divide-gray-200"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6">
+    <a href="pdfs/excluded-list.pdf" download class="text-sm text-gray-600 underline hover:text-gray-800">
+      Excluded Candidates
+    </a>
+  </footer>
+
+  <!-- JS Module -->
+  <script src="assets/js/page2.js"></script>
+</body>
+</html>

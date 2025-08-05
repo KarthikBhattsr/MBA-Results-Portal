@@ -1,0 +1,71 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MBA Results Portal</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Lottie Player for Live Animation -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md sticky top-0 shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-3xl font-extrabold text-blue-600">MBA Results Portal</h1>
+    <a href="topper-list.html" class="text-blue-600 font-medium hover:text-blue-800 transition">View Topper Lists →</a>
+  </header>
+
+  <!-- Lookup Form -->
+  <main class="flex items-center justify-center py-12">
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md space-y-6">
+      <!-- Live Animation -->
+      <lottie-player
+        src="https://assets10.lottiefiles.com/packages/lf20_usmfx6bp.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+        class="w-32 mx-auto"></lottie-player>
+      <form id="lookup-form" class="space-y-6">
+        <label for="usn" class="block text-lg font-semibold">Enter USN</label>
+        <input type="text" id="usn" name="usn" placeholder="e.g. 1BM23BA001" required
+               class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        <span id="btn-text">Lookup</span>
+          <svg id="btn-spinner" class="hidden animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+        </button>
+      </form>
+      <div id="result" class="mt-8 bg-blue-50 p-4 rounded-lg hidden">
+        <ul class="space-y-2">
+          <li><span class="font-medium">Name:</span> <span id="name"></span></li>
+          <li><span class="font-medium">Specialization:</span> <span id="specialization"></span></li>
+          <li><span class="font-medium">1st Sem SGPA:</span> <span id="sgpa1"></span></li>
+          <li><span class="font-medium">2nd Sem SGPA:</span> <span id="sgpa2"></span></li>
+          <li><span class="font-medium">3rd Sem SGPA:</span> <span id="sgpa3"></span></li>
+          <li><span class="font-medium">Overall CGPA:</span> <span id="cgpa"></span></li>
+          <li><span class="font-medium">Department Rank:</span> <span id="rank"></span></li>
+        </ul>
+      </div>
+      <p id="error" class="mt-6 text-red-600 font-medium hidden"></p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6">
+    <a href="pdfs/disclaimer.pdf" download class="text-sm text-gray-600 underline hover:text-gray-800">
+      Disclaimer
+    </a>
+  </footer>
+
+  <!-- JS Module -->
+  <script src="assets/js/page1.js"></script>
+</body>
+</html>
