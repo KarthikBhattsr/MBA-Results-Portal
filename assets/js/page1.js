@@ -2,7 +2,7 @@
 let students = [];
 
 // Load and process student data
-fetch('../data/students_data.json')
+fetch('data/students_data.json')
   .then(res => res.json())
   .then(data => {
     students = data.map((s, idx) => ({
