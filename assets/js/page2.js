@@ -50,5 +50,3 @@ function initialRender() {
   specFilter.addEventListener('change', applyFilters);
   applyFilters();
 }
-
-modify this also
