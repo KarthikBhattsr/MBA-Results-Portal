@@ -7,7 +7,7 @@ fetch('data/students_data.json')
   .then(data => {
     students = data.map((s, idx) => ({
       ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3) / 3),
+      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
     }));
     students.sort((a, b) => b.CGPA - a.CGPA);
     students.forEach((s, i) => s.Rank = i + 1);
@@ -54,6 +54,7 @@ form.addEventListener('submit', e => {
   document.getElementById('sgpa1').textContent = student.SGPA1.toFixed(2);
   document.getElementById('sgpa2').textContent = student.SGPA2.toFixed(2);
   document.getElementById('sgpa3').textContent = student.SGPA3.toFixed(2);
+  document.getElementById('sgpa4').textContent = student.SGPA4.toFixed(2);
   document.getElementById('cgpa').textContent = student.CGPA.toFixed(2);
   document.getElementById('rank').textContent = student.Rank;
 
