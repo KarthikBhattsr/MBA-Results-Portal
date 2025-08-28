@@ -1,44 +1,29 @@
-// JavaScript for index.html (USN Lookup)
-let students = [];
-
 // Load and process student data
 fetch('data/students_data.json')
   .then(res => res.json())
   .then(data => {
-    students = data.map((s, idx) => ({
-      ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
-    }));
-    students.sort((a, b) => b.CGPA - a.CGPA);
-    students.forEach((s, i) => s.Rank = i + 1);
+    // Just assign, no recalculation
+    students = data;
   })
   .catch(err => console.error(err));
 
-// Form handling
-const form = document.getElementById('lookup-form');
-const result = document.getElementById('result');
-const errorEl = document.getElementById('error');
-const btn = document.querySelector('button[type="submit"]');
-const spinner = document.getElementById('btn-spinner');
-const btnText = document.getElementById('btn-text');
-
+// Form handling (unchanged)
 form.addEventListener('submit', e => {
   e.preventDefault();
-   // Check reCAPTCHA
+
   if (grecaptcha.getResponse().length === 0) {
     errorEl.textContent = 'Please complete the CAPTCHA.';
     errorEl.classList.remove('hidden');
     return;
   }
 
-  // Show spinner
   spinner.classList.remove('hidden');
   btnText.textContent = 'Loading...';
 
   const usn = document.getElementById('usn').value.trim().toUpperCase();
   const student = students.find(s => s.USN.toUpperCase() === usn);
 
- if (!student) {
+  if (!student) {
     result.classList.add('hidden');
     errorEl.textContent = 'USN not found.';
     errorEl.classList.remove('hidden');
@@ -47,7 +32,6 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  // Show student info
   errorEl.classList.add('hidden');
   document.getElementById('name').textContent = student.Name;
   document.getElementById('specialization').textContent = student.Specialization;
@@ -60,8 +44,6 @@ form.addEventListener('submit', e => {
 
   result.classList.remove('hidden');
 
-  // Hide spinner
   spinner.classList.add('hidden');
   btnText.textContent = 'Lookup';
 });
-
