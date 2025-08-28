@@ -7,7 +7,7 @@ fetch('data/students_data.json')
   .then(data => {
     students2 = data.map(s => ({
       ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3) / 3),
+      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
     }));
     initialRender();
   })
@@ -30,6 +30,7 @@ function renderTable(data) {
       <td class="p-3">${s.SGPA1.toFixed(2)}</td>
       <td class="p-3">${s.SGPA2.toFixed(2)}</td>
       <td class="p-3">${s.SGPA3.toFixed(2)}</td>
+      <td class="p-3">${s.SGPA4.toFixed(2)}</td>
       <td class="p-3">${s.CGPA.toFixed(2)}</td>
       <td class="p-3">${idx + 1}</td>
     `;
