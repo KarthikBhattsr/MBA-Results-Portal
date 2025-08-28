@@ -5,10 +5,7 @@ let students2 = [];
 fetch('data/students_data.json')
   .then(res => res.json())
   .then(data => {
-    students2 = data.map(s => ({
-      ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
-    }));
+    students2 = data; // use CGPA & Rank directly from JSON
     initialRender();
   })
   .catch(err => console.error(err));
@@ -19,8 +16,8 @@ const tableBody = document.getElementById('table-body');
 
 function renderTable(data) {
   tableBody.innerHTML = '';
-  // sort and recalculate rank within filtered set
-  data.sort((a, b) => b.CGPA - a.CGPA).forEach((s, idx) => {
+  // keep original ordering by Rank from JSON
+  data.sort((a, b) => a.Rank - b.Rank).forEach(s => {
     const tr = document.createElement('tr');
     tr.className = 'hover:bg-green-50 transition';
     tr.innerHTML = `
@@ -32,7 +29,7 @@ function renderTable(data) {
       <td class="p-3">${s.SGPA3.toFixed(2)}</td>
       <td class="p-3">${s.SGPA4.toFixed(2)}</td>
       <td class="p-3">${s.CGPA.toFixed(2)}</td>
-      <td class="p-3">${idx + 1}</td>
+      <td class="p-3">${s.Rank}</td>
     `;
     tableBody.appendChild(tr);
   });
