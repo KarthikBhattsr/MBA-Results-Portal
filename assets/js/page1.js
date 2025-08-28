@@ -64,11 +64,3 @@ form.addEventListener('submit', e => {
   spinner.classList.add('hidden');
   btnText.textContent = 'Lookup';
 });
-
-
-
-
-in this the correct CGPA calculation is 
-Σ(Course Credits X Grade Points) / Course Credits for all courses up to the end of current semester
-
-modify the code
