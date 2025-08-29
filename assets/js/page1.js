@@ -5,9 +5,9 @@ let students = [];
 fetch('data/students_data.json')
   .then(res => res.json())
   .then(data => {
-    students = data.map((s, idx) => ({
+    students = data.map(s => ({
       ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
+      CGPA: s.CGPA
     }));
     students.sort((a, b) => b.CGPA - a.CGPA);
     students.forEach((s, i) => s.Rank = i + 1);
