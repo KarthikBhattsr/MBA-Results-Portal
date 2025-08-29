@@ -7,7 +7,7 @@ fetch('data/students_data.json')
   .then(data => {
     students2 = data.map(s => ({
       ...s,
-      CGPA: ((s.SGPA1 + s.SGPA2 + s.SGPA3 + s.SGPA4) / 4),
+      CGPA: s.CGPA,
     }));
     initialRender();
   })
